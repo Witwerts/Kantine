@@ -48,83 +48,17 @@ public class Persoon {
 		return bsn;
 	}
 	
-	/**
-     * Methode om de bsn-nummer van de Persoon aan te kunnen passen
-     *
-     * @param bsn
-     */
-	
-	public void setBsn(int bsn) {
-		this.bsn = bsn;
-	}
-
-	/**
-     * Methode om de voornaam van de Persoon op te vragen
-     *
-     * @return voornaam
-     */
-	
 	public String getVoornaam() {
 		return voornaam;
 	}
 	
-	/**
-     * Methode om de voornaam van de Persoon aan te kunnen passen
-     *
-     * @param voornaam
-     */
-
-	public void setVoornaam(String voornaam) {
-		this.voornaam = voornaam;
-	}
-
-	/**
-     * Methode om de achternaam van de Persoon op te kunnen vragen
-     *
-     * @return achternaam
-     */
-	
 	public String getAchternaam() {
 		return achternaam;
 	}
-
-	/**
-     * Methode om de achternaam van de Persoon aan te kunnen passen
-     *
-     * @param achternaam
-     */
-	
-	public void setAchternaam(String achternaam) {
-		this.achternaam = achternaam;
-	}
-
-	/**
-     * Methode om de geboortedatum van de Persoon op te vragen
-     *
-     * @return geboortedatum
-     */
 	
 	public Datum getGeboortedatum() {
 		return geboortedatum;
 	}
-
-	/**
-     * Methode om de geboortedatum van de Persoon aan te kunnen passen
-     *
-     * @param geboortedatum
-     */
-	
-	public void setGeboortedatum(Datum geboortedatum) {
-		this.geboortedatum = geboortedatum;
-	}
-
-	/**
-     * Hier kan de volledige naam van het geslacht van de Persoon opgevraagd worden.
-     * Niet als 'm' of 'v', maar als 'Man' of 'Vrouw'
-     * Wanneer er geen geslacht bekend is, zal er 'Onbekend' terug gestuurd worden.
-     *
-     * @return geslacht van de Persoon (String)
-     */
 	
 	public String getGeslacht() {
 		if(this.geslacht == 'm')

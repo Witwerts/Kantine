@@ -24,8 +24,8 @@ public class Artikel {
      */
 	
 	public Artikel(String naam, Double prijs) {
-		this.setNaam(naam);
-		this.setPrijs(prijs);
+		this.naam = naam;
+		this.prijs = prijs;
 	}
 
 	/**

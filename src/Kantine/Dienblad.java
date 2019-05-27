@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Dienblad {
 	private ArrayList<Artikel> artikelen;
+	private Persoon klant;
 	
 	/**
      * Constructor
@@ -13,8 +14,19 @@ public class Dienblad {
 	
 	public Dienblad() {
 		this.artikelen = new ArrayList<Artikel>();
+		this.klant = null;
 	}
 	
+	/**
+     * Constructor
+     * 
+     * Hier wordt een volledig nieuwe dienblad met Klant aangemaakt, dus een lege lijst met artikelen
+     */
+	
+	public Dienblad(Persoon klant) {
+		this.artikelen = new ArrayList<Artikel>();
+		this.klant = klant;
+	}
 	
 	/**
      * Methode om artikel aan dienblad toe te voegen
@@ -40,6 +52,26 @@ public class Dienblad {
 	}
 	
 	/**
+     * Methode om de Klant van het dienblad op te vragen
+     *
+     * @return klant
+     */
+	
+	public Persoon getKlant() {
+		return this.klant;
+	}
+	
+	/**
+     * Methode om een nieuwe klant aan het dienblad te geven
+     *
+     * @param klant
+     */
+	
+	public void setKlant(Persoon klant) {
+		this.klant = klant;
+	}
+	
+	/**
      * Methode om de totaalprijs van de artikelen
      * op dienblad uit te rekenen
      *
@@ -47,7 +79,7 @@ public class Dienblad {
      */
 	
 	public double getTotaalPrijs() {
-		double totaal = 0.00f;
+		double totaal = 0.00;
 		
 		for(Artikel artikel : this.artikelen) {
 			if(artikel == null)
