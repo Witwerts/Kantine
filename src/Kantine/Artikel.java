@@ -12,7 +12,7 @@ public class Artikel {
 	
 	public Artikel() {
 		this.naam = "";
-		this.prijs = 0.00f;
+		this.prijs = 0.00;
 	}
 	
 	/**
