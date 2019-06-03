@@ -120,6 +120,7 @@ public class KantineSimulatie {
 				// maak persoon en dienblad aan, koppel ze
 				// en bedenk hoeveel artikelen worden gepakt
 				int aantalartikelen = this.getRandomValue(MIN_ARTIKELEN_PER_PERSOON, MAX_ARTIKELEN_PER_PERSOON);
+				Dienblad dienblad = new Dienblad();
 				
 				// genereer de "artikelnummers", dit zijn indexen
 				// van de artikelnamen array
@@ -131,9 +132,7 @@ public class KantineSimulatie {
 				
 				// loop de kantine binnen, pak de gewenste
 				// artikelen, sluit aan
-				Persoon persoon = new Persoon();
-				
-				kantine.loopPakSluitAan(persoon, artikelen);
+				kantine.loopPakSluitAan(dienblad, artikelen);
 			}
 			
 			// verwerk rij voor de kassa

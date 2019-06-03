@@ -15,11 +15,9 @@ public class Kantine {
 		this.kassa = new Kassa(this.kassarij);
 	}
 	
-	public void loopPakSluitAan(Persoon persoon, String[] artikelnamen) {
+	public void loopPakSluitAan(Dienblad dienblad, String[] artikelnamen) {
 		if(this.kassarij == null)
 			return;
-		
-		Dienblad dienblad = new Dienblad(persoon);
 		
 		for(String artikelnaam : artikelnamen) {
 			Artikel artikel = this.kantineaanbod.getArtikel(artikelnaam);
