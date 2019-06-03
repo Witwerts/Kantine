@@ -1,5 +1,7 @@
 package Kantine;
 
+import java.util.*;
+
 public class Kassa {
 	private KassaRij kassarij;
 	private int gescandeArtikelen;
@@ -32,7 +34,8 @@ public class Kassa {
 		if(klant == null)
 			return;
 		
-		this.bedragInKassa = klant.getTotaalPrijs();
+		this.gescandeArtikelen += klant.getAantalArtikelen();
+		this.bedragInKassa += this.getTotaalPrijs(klant);
 	}
 	
 	/**
@@ -65,6 +68,20 @@ public class Kassa {
 	
 	public void resetKassa() {
 		this.gescandeArtikelen = 0;
-		this.bedragInKassa = 0.00f;
+		this.bedragInKassa = 0.00;
+	}
+	
+	public double getTotaalPrijs(Dienblad klant) {
+		double totaal = 0.00;
+		Stack<Artikel> artikelen = klant.getArtikelen();
+		
+		for(Artikel artikel : artikelen) {
+			if(artikel == null)
+				continue;
+			
+			totaal += artikel.getPrijs();
+		}
+		
+		return totaal;
 	}
 }

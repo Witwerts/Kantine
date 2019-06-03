@@ -1,9 +1,9 @@
 package Kantine;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class KassaRij {
-	private ArrayList<Dienblad> rij;
+	private LinkedList<Dienblad> rij;
 	
 	/**
      * Constructor
@@ -13,7 +13,7 @@ public class KassaRij {
      * @param De rij van de kassa (KassaRij)
      */
 	public KassaRij() {
-		this.rij = new ArrayList<Dienblad>();
+		this.rij = new LinkedList<Dienblad>();
 	}
 	
 	/**
@@ -35,7 +35,7 @@ public class KassaRij {
 	
 	public Dienblad eerstePersoonInRij() {
 		if(this.ErIsEenRij())
-			return this.rij.get(0);
+			return this.rij.removeFirst();
 	
 		return null;
 	}

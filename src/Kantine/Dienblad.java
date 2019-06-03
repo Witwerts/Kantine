@@ -3,7 +3,7 @@ package Kantine;
 import java.util.*;
 
 public class Dienblad {
-	private ArrayList<Artikel> artikelen;
+	private Stack<Artikel> artikelen;
 	private Persoon klant;
 	
 	/**
@@ -13,7 +13,7 @@ public class Dienblad {
      */
 	
 	public Dienblad() {
-		this.artikelen = new ArrayList<Artikel>();
+		this.artikelen = new Stack<Artikel>();
 		this.klant = null;
 	}
 	
@@ -24,7 +24,7 @@ public class Dienblad {
      */
 	
 	public Dienblad(Persoon klant) {
-		this.artikelen = new ArrayList<Artikel>();
+		this.artikelen = new Stack<Artikel>();
 		this.klant = klant;
 	}
 	
@@ -39,6 +39,10 @@ public class Dienblad {
 			return;
 		
 		this.artikelen.add(artikel);
+	}
+	
+	public Stack<Artikel> getArtikelen(){
+		return this.artikelen;
 	}
 	
 	/**
@@ -78,16 +82,16 @@ public class Dienblad {
      * @return De totaalprijs
      */
 	
-	public double getTotaalPrijs() {
-		double totaal = 0.00;
+	/*public double getTotaalPrijs() {
+	double totaal = 0.00f;
+	
+	for(Artikel artikel : this.artikelen) {
+		if(artikel == null)
+			continue;
 		
-		for(Artikel artikel : this.artikelen) {
-			if(artikel == null)
-				continue;
-			
-			totaal += artikel.getPrijs();
-		}
-		
-		return totaal;
+		totaal += artikel.getPrijs();
 	}
+	
+	return totaal;
+}*/
 }
