@@ -2,25 +2,27 @@ package Kantine;
 
 import java.util.*;
 
+/**
+ * Deze klasse zorgt voor de creatie en werking van een dienblad.
+ * @author Albert Witwerts
+ * @author Gerwin Terpstra
+ * @version 1.1
+ */
 public class Dienblad {
 	private Stack<Artikel> artikelen;
 	private Persoon klant;
 	
 	/**
-     * Constructor
-     * 
-     * Hier wordt een volledig nieuwe dienblad aangemaakt, dus met een lege lijst met artikelen
-     */
-	
+     * Constructor zonder parameters waarmee een nieuw dienblad wordt aangemaakt met de instantievariabelen null.
+     */	
 	public Dienblad() {
 		this.artikelen = new Stack<Artikel>();
 		this.klant = null;
 	}
 	
 	/**
-     * Constructor
-     * 
-     * Hier wordt een volledig nieuwe dienblad met Klant aangemaakt, dus een lege lijst met artikelen
+     * Constructor met parameters waarmee een nieuw dienblad met een bekende klant aangemaakt wordt.
+     * @param klant
      */
 	
 	public Dienblad(Persoon klant) {
@@ -29,11 +31,9 @@ public class Dienblad {
 	}
 	
 	/**
-     * Methode om artikel aan dienblad toe te voegen
-     *
+     * Methode om artikel aan dienblad toe te voegen     *
      * @param artikel
-     */
-	
+     */	
 	public void voegToe(Artikel artikel) {
 		if(artikel == null)
 			return;
@@ -41,57 +41,35 @@ public class Dienblad {
 		this.artikelen.add(artikel);
 	}
 	
+	/**
+	 * Deze methode is de getter van artikelen.
+	 * @return artikelen
+	 */
 	public Stack<Artikel> getArtikelen(){
 		return this.artikelen;
 	}
 	
 	/**
-     * Methode om aantal artikelen op dienblad te tellen
-     *
+     * Methode om aantal artikelen op dienblad te tellen     *
      * @return Het aantal artikelen
-     */
-	
+     */	
 	public int getAantalArtikelen() {
 		return this.artikelen.size();
 	}
 	
 	/**
-     * Methode om de Klant van het dienblad op te vragen
-     *
+     * Methode om de Klant van het dienblad op te vragen     *
      * @return klant
-     */
-	
+     */	
 	public Persoon getKlant() {
 		return this.klant;
 	}
 	
 	/**
-     * Methode om een nieuwe klant aan het dienblad te geven
-     *
+     * Methode om een nieuwe klant aan het dienblad te geven     *
      * @param klant
-     */
-	
+     */	
 	public void setKlant(Persoon klant) {
 		this.klant = klant;
-	}
-	
-	/**
-     * Methode om de totaalprijs van de artikelen
-     * op dienblad uit te rekenen
-     *
-     * @return De totaalprijs
-     */
-	
-	/*public double getTotaalPrijs() {
-	double totaal = 0.00f;
-	
-	for(Artikel artikel : this.artikelen) {
-		if(artikel == null)
-			continue;
-		
-		totaal += artikel.getPrijs();
-	}
-	
-	return totaal;
-}*/
+	}	
 }

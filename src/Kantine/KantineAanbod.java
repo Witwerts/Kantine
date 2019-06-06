@@ -2,6 +2,12 @@ package Kantine;
 
 import java.util.*;
 
+/**
+ * Deze klasse zorgt voor de werking van alle artikelen in de kantine.
+ * @author Gerwin Terpstra
+ * @author Albert Witwerts
+ * @version 1.1
+ */
 public class KantineAanbod {
     // interne opslag voorraad
     private HashMap<String, ArrayList<Artikel>> aanbod;
@@ -9,10 +15,10 @@ public class KantineAanbod {
     private HashMap<String, Double> prijzen;
     
     /**
-     * Constructor. Het eerste argument is een lijst met artikelnamen,
-     * het tweede argument is een lijst met prijzen en het derde argument
-     * is een lijst met hoeveelheden. Let op: de dimensies van de drie arrays
-     * moeten wel gelijk zijn!
+     * Constructor die een aanbod van artikelen aanmaakt 
+     * @param artikelnaam
+     * @param prijs
+     * @param hoeveelheid
      */
     public KantineAanbod(String[] artikelnaam, double[] prijs, int[] hoeveelheid) {
         aanbod=new HashMap<String, ArrayList<Artikel>>();
@@ -31,6 +37,10 @@ public class KantineAanbod {
         }
     }
 
+    /**
+     * Deze methode zorgt ervoor dat de voorraden gevuld blijven.
+     * @param productnaam
+     */
     private void vulVoorraadAan(String productnaam){
     	ArrayList<Artikel> huidigeVoorraad = aanbod.get(productnaam);
     	int startHoeveelheid = startVoorraad.get(productnaam);
@@ -43,9 +53,10 @@ public class KantineAanbod {
         aanbod.put(productnaam, huidigeVoorraad);
     }
     
-    /*
+    /**
      * Private methode om de lijst van artikelen te krijgen op basis van de    
      * naam van het artikel. Retourneert null als artikel niet bestaat.
+     * @return arraylist van artikelen
      */
     private ArrayList<Artikel> getArrayList(String productnaam) {
          return aanbod.get(productnaam); 
@@ -54,6 +65,7 @@ public class KantineAanbod {
     /**
      * Private methode om een Artikel van de stapel artikelen af te pakken. 
      * Retourneert null als de stapel leeg is.
+     * @return artikel
      */
     private Artikel getArtikel(ArrayList<Artikel> stapel) {
         if (stapel==null) { 

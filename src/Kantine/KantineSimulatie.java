@@ -3,6 +3,12 @@ package Kantine;
 import java.text.DecimalFormat;
 import java.util.*;
 
+/**
+ * Deze klasse zorgt voor de simulatie van het project Kantine.
+ * @author Albert Witwerts
+ * @author Gerwin Terpstra
+ * @version 1.1
+ */
 public class KantineSimulatie {
 	// kantine
 	private Kantine kantine;
@@ -37,6 +43,7 @@ public class KantineSimulatie {
 	private static final int MIN_ARTIKELEN_PER_PERSOON = 1;
 	private static final int MAX_ARTIKELEN_PER_PERSOON = 4;
 	
+	//constructor
 	public KantineSimulatie() {
 		kantine = new Kantine();
 		random = new Random();
@@ -49,14 +56,12 @@ public class KantineSimulatie {
 
 	/**
 	* Methode om een array van random getallen liggend tussen
-	* min en max van de gegeven lengte te genereren
-	*
+	* min en max van de gegeven lengte te genereren	*
 	* @param lengte
 	* @param min
 	* @param max
 	* @return De array met random getallen
-	*/
-	
+	*/	
 	private int[] getRandomArray(int lengte, int min, int max) {
 		int[] temp = new int[lengte];
 	
@@ -69,25 +74,21 @@ public class KantineSimulatie {
 	
 	/**
 	* Methode om een random getal tussen min(incl)
-	* en max(incl) te genereren.
-	*
+	* en max(incl) te genereren.	*
 	* @param min
 	* @param max
 	* @return Een random getal
-	*/
-	
+	*/	
 	private int getRandomValue(int min, int max) {
 		return random.nextInt(max - min + 1) + min;
 	}
 	
 	/**
 	* Methode om op basis van een array van indexen voor de array
-	* artikelnamen de bijhorende array van artikelnamen te maken
-	*
+	* artikelnamen de bijhorende array van artikelnamen te maken	*
 	* @param indexen
 	* @return De array met artikelnamen
-	*/
-	
+	*/	
 	private String[] geefArtikelNamen(int[] indexen) {
 		String[] artikelen = new String[indexen.length];
 	
@@ -100,11 +101,9 @@ public class KantineSimulatie {
 	
 	/**
 	* Deze methode simuleert een aantal dagen
-	* in het verloop van de kantine
-	*
+	* in het verloop van de kantine	
 	* @param dagen
-	*/
-	
+	*/	
 	public void Simuleer(int dagen) {
 		Kassa kassa = this.kantine.getKassa();
 		
@@ -115,7 +114,6 @@ public class KantineSimulatie {
 			// bedenk hoeveel personen vandaag binnen lopen
 			int aantalpersonen = this.getRandomValue(MIN_PERSONEN_PER_DAG, MAX_PERSONEN_PER_DAG);
 			
-			// laat de personen maar komen...
 			for(int j = 0; j < aantalpersonen; j++) {
 				// maak persoon en dienblad aan, koppel ze
 				// en bedenk hoeveel artikelen worden gepakt
@@ -151,8 +149,7 @@ public class KantineSimulatie {
 	
 	/*
 	* Start een simulatie
-	*/
-	
+	*/	
 	public static void main(String[] args) {
 		int dagen;
 		

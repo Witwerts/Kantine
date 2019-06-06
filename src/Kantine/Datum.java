@@ -1,14 +1,19 @@
 package Kantine;
 
+/**
+ * Deze klasse zorgt voor de creatie en werking van een datum.
+ * @author Gerwin Terpstra
+ * @author Albert Witwerts
+ * @version 1.1
+ */
 public class Datum {
 	private int dag;
 	private int maand;
 	private int jaar;
 	
 	/**
-     * Constructor om een nieuwe datum aan te maken, zonder dat er een datum bekend is.
-     */
-	
+     * Constructor zonder parameters waarmee een datum met alle instanstievariabelen op 0 wordt aangemaakt.
+     */	
 	public Datum() {
 		this.dag = 0;
 		this.maand = 0;
@@ -16,13 +21,12 @@ public class Datum {
 	}
 	
 	/**
-     * Constructor
-     * 
-     * Hier wordt een nieuwe Datum aangemaakt, als er wel een dag, maand en jaar bekend is.
-     *
-     * @param dag, maand en jaar
-     */
-	
+     * Constructor waar een nieuwe datum aangemaakt met bekende datums.
+     * Als de datum niet geldig is, worden de instantievariabelen op 0 gezet.
+     * @param dag
+     * @param maand
+     * @param jaar
+     */	
 	public Datum(int dag, int maand, int jaar) {
 		if(this.bestaatDatum(dag, maand, jaar)) {
 			this.dag = dag;
@@ -37,83 +41,68 @@ public class Datum {
 	}
 	
 	/**
-     * Methode om de dag van de Datum op te vragen
-     *
+     * Deze methode is de getter van dag.
      * @return dag
-     */
-	
+     */	
 	public int getDag() {
 		return dag;
 	}
 	
 	/**
-     * Methode om de dag van de Datum aan te kunnen passen
-     *
+     * Deze methode is de zetter van dag.
      * @param dag
-     */
-	
+     */	
 	public void setDag(int dag) {
 		this.dag = dag;
 	}
 
 	/**
-     * Methode om de maand van de Datum op te vragen
-     *
+     * Deze methode is de getter van maand.
      * @return maand
-     */
-	
+     */	
 	public int getMaand() {
 		return maand;
 	}
 
 	/**
-     * Methode om de maand van de Datum aan te kunnen passen
-     *
+     * Deze methode is de setter van maand.
      * @param maand
-     */
-	
+     */	
 	public void setMaand(int maand) {
 		this.maand = maand;
 	}
 
 	/**
-     * Methode om het jaar van de Datum op te kunnen vragen
-     *
+     * Deze methode is de getter van jaar.
      * @return jaar
-     */
-	
+     */	
 	public int getJaar() {
 		return jaar;
 	}
 
 	/**
-     * Methode om het jaar van de Datum aan te kunnen passen
-     *
+     * Deze methode is de setter van jaar.
      * @param jaar
-     */
-	
+     */	
 	public void setJaar(int jaar) {
 		this.jaar = jaar;
 	}
 	
 	/**
-     * Methode om de volledige Datum in een string op te kunnen vragen.
-     *
-     * @return de datum als string
-     */
-	
+     * Deze methode geft de volledige datum terug in type string.
+     * @return de datum als string.
+     */	
 	public String getDatumAsString() {
 		return String.format("%02d-%02d-%04d", dag, maand, jaar);
 	}
 	
 	/**
-     * Methode om te kunnen controleren of de gegeven dag, maand en jaar een geldige datum is.
-     *
-     * @param dag, maand, jaar
-     *
-     * @return true/false (boolean)
-     */
-	
+     * Deze methode controleert of de gegeven dag, maand en jaar samen een geldige datum zijn.
+     * @param dag
+     * @param maand
+     * @param jaar
+     * @return geldige datum in boolean
+     */	
 	public Boolean bestaatDatum(int dag, int maand, int jaar) {
 		if(dag < 1 || maand < 1 || maand > 12 || jaar < 1900 || jaar > 2100)
 			return false;

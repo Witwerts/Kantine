@@ -1,20 +1,29 @@
 package Kantine;
 
+/**
+ * Deze klasse zorgt voor de creatie en werking van een kassa en kassarij in een kantine.
+ * @author Albert Witwerts
+ * @author Gerwin Terpstra
+ * @Version 1.1
+ */
 public class Kantine {
 	private Kassa kassa;
 	private KassaRij kassarij;
 	private KantineAanbod kantineaanbod;
 	
-	//public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//new Datum(29, 2, 2000);
-	//}
-	
+	/** 
+	 * Constructor zonder parameters
+	 */	
 	public Kantine() {
 		this.kassarij = new KassaRij();
 		this.kassa = new Kassa(this.kassarij);
 	}
 	
+	/**
+	 * Deze methode zorgt ervoor dat een dienblad met artikelen achter een rij aansluit.
+	 * @param dienblad
+	 * @param artikelnamen
+	 */	
 	public void loopPakSluitAan(Dienblad dienblad, String[] artikelnamen) {
 		if(this.kassarij == null)
 			return;
@@ -28,6 +37,7 @@ public class Kantine {
 		this.kassarij.sluitAchteraan(dienblad);
 	}
 	
+	// Deze methode zorgt ervoor dat de eerstvolgende klant afrekent zolang er een rij bestaat.	 
 	public void verwerkRijVoorKassa() {
 		while(this.kassarij != null && this.kassarij.ErIsEenRij()) {
 			Dienblad klant = this.kassarij.eerstePersoonInRij();
@@ -35,33 +45,23 @@ public class Kantine {
 		}
 	}
 	
-	/*public double hoeveelheidGeldInKassa() {
-		if(this.kassa != null)
-			return this.kassa.hoeveelheidGeldInKassa();
-		
-		return 0.00f;
-	}
-	
-	public int aantalArtikelen() {
-		if(this.kassa != null)
-			return this.kassa.aantalArtikelen();
-		
-		return 0;
-	}
-	
-	public void resetKassa() {
-		if(this.kassa != null)
-			this.kassa.resetKassa();
-	}*/
-	
+	/** 
+	 * Deze methode is de getter voor de instantievariabele kassa.
+	 * @return kassa
+	 */	
 	public Kassa getKassa() {
 		return this.kassa;
 	}
 	
+	/** 
+     * Deze methode is de getter voor de instantievariabele kantineAanbod.
+	 * @return kantineAanbod
+	 */
 	public KantineAanbod getKantineAanbod() {
 		return this.kantineaanbod;
 	}
 	
+	// Deze methode is de setter voor kantineaanbod.
 	public void setKantineAanbod(KantineAanbod kantineaanbod) {
 		this.kantineaanbod = kantineaanbod;
 	}
