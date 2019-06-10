@@ -164,13 +164,19 @@ public class KantineSimulatie {
 	/*public void Simuleer(int dagen) {
 		Kassa kassa = this.kantine.getKassa();
 		
+		// bedenk hoeveel personen vandaag binnen lopen
+		int aantalpersonen = 100;
+		
+		double[] omzet;
+		int[] aantal;
+		
 		if(dagen < 0)
 			dagen = this.DAGEN;
 		
+		omzet = new double[dagen*aantalpersonen];
+		aantal = new int[dagen];
+		
 		for(int i = 0; i < dagen; i++) {
-			// bedenk hoeveel personen vandaag binnen lopen
-			int aantalpersonen = 100;
-			
 			for(int j = 1; j <= aantalpersonen; j++) {
 				Persoon persoon;
 				
@@ -203,6 +209,9 @@ public class KantineSimulatie {
 				// loop de kantine binnen, pak de gewenste
 				// artikelen, sluit aan
 				kantine.loopPakSluitAan(dienblad, artikelen);
+				
+				//omzet opslaan
+				omzet[(j-1)*dagen+i] = kassa.getTotaalPrijs(dienblad);
 			}
 			
 			// verwerk rij voor de kassa
@@ -217,6 +226,15 @@ public class KantineSimulatie {
 			
 			// reset de kassa voor de volgende dag
 			kassa.resetKassa();
+		}
+		
+		System.out.println("Gemiddeld aantal gescande artikelen: " + (String.format("%.2f", this.administratie.berekenGemiddeldAantal(aantal))));
+		System.out.println("Gemiddeld omzet: €" + (String.format("%.2f", this.administratie.berekenGemiddeldeOmzet(omzet))));
+		
+		double[] dOmzet = this.administratie.berekenDagOmzet(omzet);
+		
+		for(int i = 1; i <= dOmzet.length; i++) {
+			System.out.println("Gemiddelde dagelijkse omzet #dag " + i + ": €" + (String.format("%.2f", dOmzet[i-1])));
 		}
 	}*/
 	
@@ -237,7 +255,7 @@ public class KantineSimulatie {
 		aantal = new int[dagen];
 		
 		for(int i = 0; i < dagen; i++) {
-			for(int j = 1; j <= aantalpersonen; j++) {
+			for(int j = 0; j < aantalpersonen; j++) {
 				Persoon persoon;
 				int rnd = this.getRandomValue(1, aantalpersonen);
 						
@@ -252,7 +270,7 @@ public class KantineSimulatie {
 				}
 				
 				// print type persoon (Student, Docent of Kantine Medewerker)
-				System.out.println("Klant " + j + ": " + persoon.toString());
+				System.out.println("Klant " + (j+1) + ": " + persoon.toString());
 				
 				// maak persoon en dienblad aan, koppel ze
 				// en bedenk hoeveel artikelen worden gepakt
@@ -272,7 +290,7 @@ public class KantineSimulatie {
 				kantine.loopPakSluitAan(dienblad, artikelen);
 				
 				//omzet opslaan
-				omzet[i*dagen+j] = kassa.getTotaalPrijs(dienblad);
+				omzet[j*dagen+i] = kassa.getTotaalPrijs(dienblad);
 			}
 			
 			// verwerk rij voor de kassa
@@ -293,12 +311,12 @@ public class KantineSimulatie {
 		}
 		
 		System.out.println("Gemiddeld aantal gescande artikelen: " + (String.format("%.2f", this.administratie.berekenGemiddeldAantal(aantal))));
-		System.out.println("Gemiddeld omzet: " + (String.format("%.2f", this.administratie.berekenGemiddeldeOmzet(omzet))));
+		System.out.println("Gemiddeld omzet: €" + (String.format("%.2f", this.administratie.berekenGemiddeldeOmzet(omzet))));
 		
 		double[] dOmzet = this.administratie.berekenDagOmzet(omzet);
 		
 		for(int i = 1; i <= dOmzet.length; i++) {
-			System.out.println("Gemiddelde dagelijkse omzet #dag " + i + ": " + (String.format("%.2f", dOmzet[i-1])));
+			System.out.println("Gemiddelde dagelijkse omzet #dag " + i + ": €" + (String.format("%.2f", dOmzet[i-1])));
 		}
 	}
 	

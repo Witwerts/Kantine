@@ -27,8 +27,9 @@ public class Administratie {
     public static double berekenGemiddeldeOmzet(double[] omzet) {
     	double totaal = 0.00;
     	
-    	for(double getal : omzet)
+    	for(double getal : omzet) {
     		totaal += getal;
+    	}
     	
     	return totaal / omzet.length;
     }
