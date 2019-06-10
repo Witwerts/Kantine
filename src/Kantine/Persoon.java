@@ -51,11 +51,29 @@ public class Persoon {
 	}
 	
 	/**
+	 * Deze methode is de setter van bsn
+	 * @param bsn
+	 */
+	
+	public void setBsn(int bsn) {
+		this.bsn = bsn;
+	}
+	
+	/**
 	 * Deze methode is de getter van voornaam.
 	 * @return voornaam
 	 */
 	public String getVoornaam() {
 		return voornaam;
+	}
+	
+	/**
+	 * Deze methode is de setter van voornaam
+	 * @param bsn
+	 */
+	
+	public void setVoornaam(String voornaam) {
+		this.voornaam = voornaam;
 	}
 	
 	/**
@@ -65,12 +83,31 @@ public class Persoon {
 	public String getAchternaam() {
 		return achternaam;
 	}
+	
+	/**
+	 * Deze methode is de setter van bsn
+	 * @param bsn
+	 */
+	
+	public void setAchternaam(String achternaam) {
+		this.achternaam = achternaam;
+	}
+	
 	/**
 	 * Deze methode is de getter van  geboortedatum.
 	 * @return geboortedatum
 	 */
 	public Datum getGeboortedatum() {
 		return geboortedatum;
+	}
+	
+	/**
+	 * Deze methode is de setter van geboortedatum
+	 * @param bsn
+	 */
+	
+	public void setGeboortedatum(Datum geboortedatum) {
+		this.geboortedatum = geboortedatum;
 	}
 	
 	/**
