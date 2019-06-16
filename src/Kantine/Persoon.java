@@ -12,6 +12,7 @@ public class Persoon {
 	private String achternaam;
 	private Datum geboortedatum;
 	private char geslacht;
+	private Betaalwijze betaalwijze;
 	
 	/**
      * Constructor zonder parameters waarmee een nieuw persoon wordt aangemaakt
@@ -23,6 +24,7 @@ public class Persoon {
 		this.achternaam = "";
 		this.geboortedatum = new Datum();
 		this.geslacht = 0;
+		this.betaalwijze = null;
 	}
 	
 	/**
@@ -33,13 +35,15 @@ public class Persoon {
      * @param geboortedatum
      * @param gesclaht
      */	
-	public Persoon(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht) {
+	public Persoon(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, Betaalwijze betaalwijze) {
 		this.bsn = bsn;
 		this.voornaam = voornaam;
 		this.achternaam = achternaam;
 		this.geboortedatum = geboortedatum;
-
+		
 		this.setGeslacht(geslacht);
+		
+		this.betaalwijze = betaalwijze;
 	}
 	
 	/**
@@ -135,6 +139,22 @@ public class Persoon {
 			System.out.println("Error: Persoon kon niet geslacht worden!");
 	}
 	
+	/**
+	 * Deze methode is de getter van betaalwijze.
+	 * @return betaalwijze
+	 */
+	public Betaalwijze getBetaalwijze() {
+		return betaalwijze;
+	}
+
+	/**
+     * Deze methode is de setter van betaalwijze.
+     * @param betaalwijze
+     */	
+	public void setBetaalwijze(Betaalwijze betaalwijze) {
+		this.betaalwijze = betaalwijze;
+	}
+
 	/**
      * Deze Methode geeft alle gegevens van het persoon terug in string.
      * @return string van alle gegevens.

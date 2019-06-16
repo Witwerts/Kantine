@@ -6,7 +6,7 @@ package Kantine;
  * @author Albert Witwerts
  * @version 1.1
  */
-public class Docent extends Persoon{
+public class Docent extends Persoon implements KortingskaartHouder {
 	private String vierLetterCode;
 	private String afdeling;
 	
@@ -39,8 +39,8 @@ public class Docent extends Persoon{
 	 * @param vierLetterCode
 	 * @param afdeling
 	 */
-	public Docent(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, String vierLetterCode, String afdeling) {
-		super(bsn, voornaam, achternaam, geboortedatum, geslacht);
+	public Docent(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, String vierLetterCode, String afdeling, Betaalwijze betaalwijze) {
+		super(bsn, voornaam, achternaam, geboortedatum, geslacht, betaalwijze);
 		
 		this.vierLetterCode = vierLetterCode;
 		this.afdeling = afdeling;
@@ -77,4 +77,20 @@ public class Docent extends Persoon{
 	public String toString() {
 		return "Docent";
 	}
+
+	@Override
+	public double geefKortingsPercentage() {
+		return 25.00;
+	}
+
+	@Override
+	public boolean heeftMaximum() {
+		return true;
+	}
+
+	@Override
+	public double geefMaximum() {
+		return 1;
+	}
+	
 }

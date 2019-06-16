@@ -6,7 +6,7 @@ package Kantine;
  * @author Gerwin Terpstra
  * @version 1.1
  */
-public class KantineMedewerker extends Persoon {
+public class KantineMedewerker extends Persoon implements KortingskaartHouder {
 	private int medewerkersNummer;
 	private boolean magAchterKassa;
 	
@@ -38,8 +38,8 @@ public class KantineMedewerker extends Persoon {
 	 * @param medewerkersNummer
 	 * @param magAchterKassa
 	 */
-	public KantineMedewerker(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, int medewerkersNummer, boolean magAchterKassa) {
-		super(bsn, voornaam, achternaam, geboortedatum, geslacht);
+	public KantineMedewerker(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, int medewerkersNummer, boolean magAchterKassa, Betaalwijze betaalwijze) {
+		super(bsn, voornaam, achternaam, geboortedatum, geslacht, betaalwijze);
 		
 		this.medewerkersNummer = medewerkersNummer;
 		this.magAchterKassa = magAchterKassa;
@@ -83,5 +83,20 @@ public class KantineMedewerker extends Persoon {
 	 */
 	public String toString() {
 		return "Kantine Medewerker";
+	}
+
+	@Override
+	public double geefKortingsPercentage() {
+		return 35.00;
+	}
+
+	@Override
+	public boolean heeftMaximum() {
+		return false;
+	}
+
+	@Override
+	public double geefMaximum() {
+		return 0;
 	}
 }

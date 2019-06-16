@@ -37,8 +37,8 @@ public class Student extends Persoon{
 	 * @param studentNummer
 	 * @param studieRichting
 	 */
-	public Student(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, int studentNummer, String studieRichting) {
-		super(bsn, voornaam, achternaam, geboortedatum, geslacht);
+	public Student(int bsn, String voornaam, String achternaam, Datum geboortedatum, char geslacht, int studentNummer, String studieRichting, Betaalwijze betaalwijze) {
+		super(bsn, voornaam, achternaam, geboortedatum, geslacht, betaalwijze);
 		
 		this.studentNummer = studentNummer;
 		this.studieRichting = studieRichting;

@@ -134,13 +134,13 @@ public class KantineSimulatie {
 				
 				//kans berekening
 				if(rnd == 100) {
-					persoon = new KantineMedewerker();
+					persoon = new KantineMedewerker(j+1, "Voornaam", "Achternaam", new Datum(1, 1, 1970), 'm', 123, true, new Pinpas());
 				}
 				else if(rnd > 89) {
-					persoon = new Docent();
+					persoon = new Docent(j+1, "Voornaam", "Achternaam", new Datum(1, 1, 1970), 'm', "ABCD", "ICT", new Contant());
 				}
 				else {
-					persoon = new Student();
+					persoon = new Student(j+1, "Voornaam", "Achternaam", new Datum(1, 1, 1970), 'm', 12345, "ICT", new Pinpas());
 				}
 				
 				// print type persoon (Student, Docent of Kantine Medewerker)
