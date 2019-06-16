@@ -1,13 +1,19 @@
 package Kantine;
 
+/**
+ * Deze klasse zorgt voor de creatie en werking van een adminstratie.
+ * @author Albert Witwerts
+ * @author Gerwin Terpstra
+ * @version 1.1
+ */
 public class Administratie {
 	 final static int DAYS_IN_WEEK = 7;
 	
     /**
      * Deze methode berekent van de int array aantal de gemiddelde waarde
      *
-     * @param aantal
-     * @return het gemiddelde
+     * @param aantal in int
+     * @return het gemiddelde in double
      */
     public static double berekenGemiddeldAantal(int[] aantal) {
     	double totaal = 0.00;
@@ -48,7 +54,11 @@ public class Administratie {
             int j = 0;
             
             while((i + DAYS_IN_WEEK * j) < omzet.length) {
-                temp[i] += omzet[i + DAYS_IN_WEEK * j];
+            	double getal = omzet[i + DAYS_IN_WEEK * j];
+            	
+            	if(getal > 0.0) {
+            		temp[i] += getal;
+            	}
 
                 j++;
             }

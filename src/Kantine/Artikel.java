@@ -1,5 +1,11 @@
 package Kantine;
 
+/**
+ * Deze klasse zorgt voor de creatie en werking van een artikel.
+ * @author Albert Witwerts
+ * @author Gerwin Terpstra
+ * @version 1.1
+ */
 public class Artikel {
 	private String naam;
 	private Double prijs;
@@ -8,8 +14,7 @@ public class Artikel {
 	 * Constructor
      * 
      * Hier wordt een volledig nieuwe artikel aangemaakt, dus het heeft nog geen naam en prijs.
-	 */
-	
+	 */	
 	public Artikel() {
 		this.naam = "";
 		this.prijs = 0.00;
