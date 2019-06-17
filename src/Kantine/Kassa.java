@@ -49,10 +49,16 @@ public class Kassa {
 			totaalprijs -= korting;
 		}
 		
-		if(klant.getKlant().getBetaalwijze().betaal(totaalprijs)) 
-			this.bedragInKassa += this.getTotaalPrijs(klant);
-		else
+		try {
+			if(klant.getKlant().getBetaalwijze().betaal(totaalprijs)) 
+				this.bedragInKassa += this.getTotaalPrijs(klant);
+			else {
+				throw new TeWeinigGeldException();
+			}
+		}
+		catch (TeWeinigGeldException e) {
 			System.out.println("Klant " + klant.getKlant().getBsn() + " kan niet betalen!");
+		}
 	}
 	
 	/**
