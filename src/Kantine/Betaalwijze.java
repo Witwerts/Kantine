@@ -2,7 +2,7 @@ package Kantine;
 
 import java.util.Random;
 
-public abstract class Betaalwijze {
+public abstract class Betaalwijze extends TeWeinigGeldException {
     protected double saldo;
 
     public Betaalwijze() {
@@ -24,6 +24,7 @@ public abstract class Betaalwijze {
      *
      * @param tebetalen
      * @return Boolean om te kijken of er voldoende saldo is
+     * @throws TeWeinigGeldException 
      */
     public abstract boolean betaal(double tebetalen);
 }
