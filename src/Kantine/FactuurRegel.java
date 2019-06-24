@@ -17,8 +17,8 @@ import javax.persistence.GenerationType;
 @Table(name = "regel")
 public class FactuurRegel implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-    private Long regel_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "factuur_id")

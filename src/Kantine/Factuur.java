@@ -16,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import java.io.Serializable;
@@ -49,7 +50,8 @@ public class Factuur implements Serializable {
 	@Column(name = "totaal", nullable = false)
 	private double totaal;
 	
-    @OneToMany(targetEntity = FactuurRegel.class, mappedBy = "regel_id", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name = "factuur_regel", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "regel_id"))
     private List<FactuurRegel> regels;
 	
 	/** 
