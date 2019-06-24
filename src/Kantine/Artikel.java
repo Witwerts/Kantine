@@ -1,13 +1,28 @@
 package Kantine;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Deze klasse zorgt voor de creatie en werking van een artikel.
  * @author Albert Witwerts
  * @author Gerwin Terpstra
  * @version 1.1
  */
-public class Artikel {
+
+@Embeddable
+public class Artikel implements Serializable {
+	@Column(name = "artikel")
 	private String naam;
+	
+	@Column(name = "prijs")
 	private Double prijs;
 	
 	/** 

@@ -85,17 +85,14 @@ public class KantineMedewerker extends Persoon implements KortingskaartHouder {
 		return "Kantine Medewerker";
 	}
 
-	@Override
 	public double geefKortingsPercentage() {
 		return 35.00;
 	}
 
-	@Override
 	public boolean heeftMaximum() {
 		return false;
 	}
 
-	@Override
 	public double geefMaximum() {
 		return 0;
 	}

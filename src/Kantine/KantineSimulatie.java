@@ -1,7 +1,18 @@
 package Kantine;
 
-import java.text.DecimalFormat;
-import java.util.*;
+import java.util.Random;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import java.util.Arrays;
+import java.util.List;
+import javax.persistence.TypedQuery;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.EntityManagerFactory;
 
 /**
  * Deze klasse zorgt voor de simulatie van het project Kantine.
@@ -9,7 +20,12 @@ import java.util.*;
  * @author Gerwin Terpstra
  * @version 1.1
  */
+
 public class KantineSimulatie {
+	//entityManager
+    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("kantineSimulatie");
+    private EntityManager manager;
+	
 	// kantine
 	private Kantine kantine;
 	
@@ -48,7 +64,10 @@ public class KantineSimulatie {
 	
 	//constructor
 	public KantineSimulatie() {
-		kantine = new Kantine();
+		// Create an EntityManager
+        manager = ENTITY_MANAGER_FACTORY.createEntityManager();
+		
+		kantine = new Kantine(this.manager);
 		random = new Random();
 		
 		int[] hoeveelheden = getRandomArray(AANTAL_ARTIKELEN, MIN_ARTIKELEN_PER_SOORT, MAX_ARTIKELEN_PER_SOORT);
@@ -192,6 +211,41 @@ public class KantineSimulatie {
 		for(int i = 1; i <= dOmzet.length; i++) {
 			System.out.println("Gemiddelde dagelijkse omzet #dag " + i + ": €" + (String.format("%.2f", dOmzet[i-1])));
 		}
+		
+		System.out.println();
+		
+		//queries uitvoeren
+		Query query;
+		List<Object[]> resultList;
+		
+		//totale omzet en toegepaste korting (3a)
+		query = manager.createNamedQuery("Factuur.total");
+		resultList = query.getResultList();
+		
+		System.out.println("totale omzet en toegepaste korting (3a)");
+		resultList.forEach(r -> System.out.println(Arrays.toString(r)));
+		System.out.println();
+		
+		//gemiddelde omzet en toegepaste korting (3b)
+		query = manager.createNamedQuery("Factuur.average");
+		resultList = query.getResultList();
+		
+		System.out.println("gemiddelde omzet en toegepaste korting (3b)");
+		resultList.forEach(r -> System.out.println(Arrays.toString(r)));
+		System.out.println();
+		
+		//top 3 van facturen met de hoogste omzet (3c)
+		query = manager.createNamedQuery("Factuur.top").setMaxResults(3);
+		resultList = query.getResultList();
+		
+		System.out.println("top 3 van facturen met de hoogste omzet (3c)");
+		resultList.forEach(r -> System.out.println(Arrays.toString(r)));
+		System.out.println();
+        
+        // Close the EntityManager
+        manager.close();
+        // NEVER FORGET TO CLOSE THE ENTITY_MANAGER_FACTORY
+        ENTITY_MANAGER_FACTORY.close();
 	}
 	
 	/*
@@ -199,6 +253,7 @@ public class KantineSimulatie {
 	*/	
 	public static void main(String[] args) {
 		int dagen;
+		KantineSimulatie simulatie = new KantineSimulatie();
 		
 		if(args.length == 0) {
 			dagen = DAGEN;
@@ -206,6 +261,6 @@ public class KantineSimulatie {
 			dagen = Integer.parseInt(args[0]);
 		}
 		
-		new KantineSimulatie().Simuleer(dagen);
+		simulatie.Simuleer(dagen);
 	}
 }

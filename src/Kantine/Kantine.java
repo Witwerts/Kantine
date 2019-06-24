@@ -1,5 +1,7 @@
 package Kantine;
 
+import javax.persistence.EntityManager;
+
 /**
  * Deze klasse zorgt voor de creatie en werking van een kassa en kassarij in een kantine.
  * @author Albert Witwerts
@@ -11,12 +13,16 @@ public class Kantine {
 	private KassaRij kassarij;
 	private KantineAanbod kantineaanbod;
 	
+	private EntityManager manager;
+	
 	/** 
 	 * Constructor zonder parameters
 	 */	
-	public Kantine() {
+	public Kantine(EntityManager manager) {
 		this.kassarij = new KassaRij();
-		this.kassa = new Kassa(this.kassarij);
+		this.kassa = new Kassa(manager, this.kassarij);
+		
+		this.manager = manager;
 	}
 	
 	/**
